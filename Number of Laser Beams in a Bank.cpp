@@ -1,3 +1,30 @@
+// Time Complexity - O(M * N)
+// Space Complexity = O(1)
+class Solution {
+public:
+    int numberOfBeams(vector<string>& bank) {
+        int m = bank.size();
+        int n = bank[0].size();
+        int ans = 0, prev = 0;
+        for(int i = 0; i < m; i++){
+            int currentRow = 0;
+            for(int j = 0; j < n; j++){
+                if(bank[i][j] == '1'){
+                    currentRow++;
+                }
+            }
+            ans += (prev * currentRow);
+            if(currentRow != 0){
+                prev = currentRow;
+            }
+        }
+        return ans;
+    }
+};
+
+-------------------------------------------------------
+// Time Complexity - O(M * N)
+// Space Complexity = O(M)
 class Solution {
 public:
     int numberOfBeams(vector<string>& bank) {
